@@ -6,66 +6,9 @@
 /*   By: jalwahei <jalwahei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:16:51 by jalwahei          #+#    #+#             */
-/*   Updated: 2022/10/22 16:49:17 by jalwahei         ###   ########.fr       */
+/*   Updated: 2022/11/10 16:04:00 by jalwahei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// #include <stdio.h>
-// #include <stdarg.h>
-
-// void printmini(char *str, ...)
-// {
-// 	int arg1;
-// 	char key;
-// 	va_list args;
-// 	va_start(args, str);
-// 	while (*str != '\0')
-// 	{
-// 		if (*str == '%')
-// 		{
-// 			while(*str == '%')
-// 			{
-		
-// 			key = *(++str);
-// 			if (key)
-// 			{
-// 				if (key == 'd')
-// 				{
-// 					arg1 = va_arg(args, int);
-// 					printf("%d", arg1);
-// 					break;
-// 				}
-// 				else if (key == '%')
-// 				{
-// 					putchar(key);
-// 					break;
-// 				}
-// 				else if (key == 's')
-// 				{
-// 					printf("%s", va_arg(args, char *));
-// 					break;
-// 				}
-// 			}
-			
-// 		}
-// 		}
-// 		else
-// 		putchar(*str);
-// 		str++;
-// 	}
-// 	va_end(args);
-// }
-// int main()
-// {
-// 	int i = 0;
-// 	float j = 0.0;
-// 	char *str = ":D:D:D:D:D";
-
-
-// 	void *x = &i;
-// 	printmini("SHE MADE IT WITH SHALALAEEET  GG %s %i  bla bla  ",  str, i);
-// 	return 0;
-// }
 
 #include "ft_printf.h"
 
@@ -82,14 +25,12 @@ int	ft_check(char c, va_list arg)
 		p += ft_putnbr(va_arg(arg, int));
 	else if (c == 'u')
 		p += ft_u(va_arg(arg, unsigned int));
-	else if (c == 'x')
-		p += ft_x(va_arg(arg, unsigned int), 0);
-	else if (c == 'X')
-		p += ft_x(va_arg(arg, unsigned int), 1);
+	else if (c == 'x' || c == 'X')
+		c += ft_hex_base(va_arg(arg, unsigned int), c);
 	else if (c == 'p')
 	{
-		p += ft_putstr("0x");
-		p += ft_pointer(va_arg(arg, unsigned long));
+		c += write(1, "0x", 2);
+		c += ft_hex_base(va_arg(arg, unsigned long), 'x');
 	}
 	else if (c == '%')
 		p += ft_putchar('%');
@@ -127,13 +68,28 @@ int	ft_printf(const char *str, ...)
 	return (j);
 }
 
-// int	main()
+// #include<stdio.h>
+// #include<printf.h>
+// #include<unistd.h>
+
+// int	main(void)
 // {
-// 	char	*s = "ola";
-// 	char	*c;
-// 	c = s;
-// 	ft_printf("alo alo %d %s %c %i %% %u %s %x %X %p \n", 123, "OUUU", 'o', -59, -10, NULL, 202, 202, &c);
-// 	printf("alo alo %d %s %c %i %% %u %s %x %X %p \n", 123, "OUUU", 'o', -59, -10, NULL, 202, 202, &c);
-// 	ft_printf("%%\n");
-// 	printf("%%%");
+// 	int				i;
+// 	int				d;
+// 	unsigned int	l;
+// 	unsigned int	kira;
+// 	void			*p;
+
+// 	p = (int *)0;
+// 	i = 0;
+// 	d = -0;
+// 	kira = 4294967295;
+// 	l = 0;
+// 	printf("Original = :%%: :%c: [%d] [%i] :%p:\n", 'a', d, i, p);
+// 	ft_printf("Mine     = :%%: :%c: [%d] [%i] :%p:\n", 'a', d, i, p);
+// 	write(1, "\n\n", 2);
+// 	printf("Original = u:[%u] x:[%x] X:[%X] s:[%s]\n", kira, l, l,
+// 		"Uciha Jafar");
+// 	ft_printf("Mine     = u:[%u] x:[%x] X:[%X] s:[%s]\n", kira, l, l,
+// 		"Uciha Jafar");
 // }

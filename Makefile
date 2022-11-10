@@ -10,7 +10,7 @@ LIB = ar rcs
 
 INC = ft_printf.h
 
-SOURCES = ft_functions2.c \
+SOURCES = ft_putfunc.c \
 		  ft_functions.c \
 		  ft_printf.c
 

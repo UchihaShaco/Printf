@@ -6,7 +6,7 @@
 /*   By: jalwahei <jalwahei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 14:09:02 by jalwahei          #+#    #+#             */
-/*   Updated: 2022/10/19 15:23:25 by jalwahei         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:35:10 by jalwahei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	ft_putstr(char *str);
 int	ft_putchar(char c);
 int	ft_putnbr(int nb);
 int	ft_u(unsigned int u);
-int	ft_x(unsigned int x, int b);
-int	ft_pointer(unsigned long p);
 int	ft_printf(const char *s, ...);
-
+int	ft_hex_base(unsigned long nb, int c);
 #endif

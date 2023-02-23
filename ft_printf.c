@@ -6,7 +6,7 @@
 /*   By: jalwahei <jalwahei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:16:51 by jalwahei          #+#    #+#             */
-/*   Updated: 2022/11/10 16:04:00 by jalwahei         ###   ########.fr       */
+/*   Updated: 2022/11/11 15:47:25 by jalwahei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	ft_check(char c, va_list arg)
 	else if (c == 'u')
 		p += ft_u(va_arg(arg, unsigned int));
 	else if (c == 'x' || c == 'X')
-		c += ft_hex_base(va_arg(arg, unsigned int), c);
+		p += ft_hex_base(va_arg(arg, unsigned int), c);
 	else if (c == 'p')
 	{
-		c += write(1, "0x", 2);
-		c += ft_hex_base(va_arg(arg, unsigned long), 'x');
+		p += write(1, "0x", 2);
+		p += ft_hex_base(va_arg(arg, unsigned long), 'x');
 	}
 	else if (c == '%')
 		p += ft_putchar('%');

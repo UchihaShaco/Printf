@@ -6,7 +6,7 @@
 /*   By: jalwahei <jalwahei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 18:50:37 by jalwahei          #+#    #+#             */
-/*   Updated: 2022/11/09 15:34:58 by jalwahei         ###   ########.fr       */
+/*   Updated: 2022/11/11 15:51:11 by jalwahei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_x(unsigned int x, int b)
 	return (i);
 }
 
-int	ft_hex_base(unsigned long nb, int c)
+int	ft_hex_base(unsigned long nb, int flag)
 {
 	int		c;
 	char	*base;
@@ -68,14 +68,14 @@ int	ft_hex_base(unsigned long nb, int c)
 	c = 0;
 	if (nb == 0)
 		return (write(1, "0", 1));
-	if (c == 'x')
+	if (flag == 'x')
 		base = "0123456789abcdef";
-	if (c == 'X')
+	if (flag == 'X')
 		base = "0123456789ABCDEF";
 	if (nb >= 16)
 	{
-		c += ft_hex_base(nb / 16, c);
-		c += ft_hex_base(nb % 16, c);
+		c += ft_hex_base(nb / 16, flag);
+		c += ft_hex_base(nb % 16, flag);
 	}
 	else
 		c += ft_putchar(base[nb]);

@@ -1,4 +1,4 @@
-# Printf
+# ft_printf
 # Project Overview <br>
 The ft_printf project is a C language implementation of the printf function. The printf function is used to format and print data to the console. The ft_printf implementation provides a way for C programmers to create formatted output for their programs.<br>
 
